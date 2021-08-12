@@ -1,0 +1,13 @@
+{
+	"passwordSecret":"123wsadas",
+	"tokenSecret":"123wsadas",
+	"mp-weixin": {
+		"tokenExpiresIn": 259200,
+		"oauth": {
+			"weixin": {
+				"appid": "wxd91ffaefb2804638",
+				"appsecret": "423d7d7c63021664316b5b894748644c"
+			}
+		}
+	}
+}
