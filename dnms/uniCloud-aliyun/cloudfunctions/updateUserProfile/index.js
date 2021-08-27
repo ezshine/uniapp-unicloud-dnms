@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
 	
 	const dbRes = await db.collection("users").where({
 		openid:payload.openid
-	}).limit(1).update({
+	}).update({
 		nickName:userInfo.nickName,
 		avatarUrl:userInfo.avatarUrl,
 		gender:userInfo.gender,

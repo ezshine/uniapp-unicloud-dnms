@@ -8,3 +8,7 @@
 // 数据库查询有最大返回条数限制，详见：https://uniapp.dcloud.net.cn/uniCloud/cf-database?id=limit
 // 详细JQL语法，请参考 https://uniapp.dcloud.net.cn/uniCloud/clientdb?id=jsquery
 
+// 下面示例查询uni-id-users表的所有数据
+db.collection('books').where({
+	shelfid:"60ffb9df2e5faa0001c5586e"
+});

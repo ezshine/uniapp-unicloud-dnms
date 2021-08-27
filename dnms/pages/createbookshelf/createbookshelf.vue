@@ -88,9 +88,17 @@
 						latitude:this.latitude
 					},
 					success: (res) => {
-						uni.navigateBack({
-							
-						})
+						if(res.result.err==1){
+							uni.showModal({
+								content:"书房名称未通过内容安全审查",
+								showCancel:false
+							})
+						}else{
+							uni.navigateBack({
+								
+							})
+						}
+						
 					}
 				})
 			}

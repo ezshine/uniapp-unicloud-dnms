@@ -13,8 +13,10 @@ exports.main = async (event, context) => {
 	let dbRes;
 	if(action=="create"){
 		
-		const result = await msgSecCheck(payload.openid,event.name);
-		if(result.errcode!=0)return Error();
+		const res = await msgSecCheck(payload.openid,event.name);
+		if(res.result.suggest!="pass"){
+			return {err:1,msg:"内容不安全"};
+		}
 		
 		dbRes = await db.collection("bookshelfs").add({
 			owner:payload.openid,
@@ -23,7 +25,15 @@ exports.main = async (event, context) => {
 			geopoint:new db.Geo.Point(event.longitude, event.latitude),
 			totalbook:0
 		})
+		
+		return dbRes;
 	}else if(action=="update"){
+		const res = await msgSecCheck(payload.openid,event.name);
+		
+		if(res.result.suggest!="pass"){
+			return {err:1,msg:"内容不安全"};
+		}
+		
 		dbRes = await db.collection("bookshelfs").where({
 			"_id":dbCmd.eq(event._id),
 			"owner":dbCmd.eq(payload.openid)
@@ -32,11 +42,13 @@ exports.main = async (event, context) => {
 			address:event.address,
 			geopoint:new db.Geo.Point(event.longitude, event.latitude)
 		})
+		
+		return dbRes;
 	}else if(action=="delete"){
 		dbRes = await db.collection("bookshelfs").where({
 			"_id":dbCmd.eq(event._id),
 			"owner":dbCmd.eq(payload.openid)
-		}).remove()
+		}).remove();
 	}else if(action=="listmy"){
 		dbRes = await db.collection('bookshelfs').where({
 			owner:dbCmd.eq(payload.openid)

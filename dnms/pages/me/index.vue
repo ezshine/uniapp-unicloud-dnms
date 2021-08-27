@@ -67,6 +67,7 @@
 				})
 			},
 			onRemoveHandler(){
+				console.log("已删除，刷新当前界面")
 				this.getBookshelfs();
 			},
 			getBookshelfs(){

@@ -10,7 +10,7 @@ function call(option){
 			name:option.name,
 			data:option.data,
 			success:(res)=>{
-				if(res.result.token)token = res.result.token;
+				if(res.result&&res.result.token)token = res.result.token;
 				if(option.success)option.success(res);
 				resolve(res);
 			},
