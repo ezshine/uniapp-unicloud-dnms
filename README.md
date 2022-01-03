@@ -6,3 +6,10 @@
 - [掘金：大帅老猿](https://juejin.cn/user/2955079655898093)
 - [哔哩哔哩：大帅老猿](https://space.bilibili.com/422646817)
 
+
+### 使用说明
+
+1. 注册自己的微信小程序并获取appid和secret
+2. 将appid和secret填写到`cloudfunctions/common/wx-common/index.js`中
+3. 注册自己的uniCloud服务，并创建关联一个阿里云服务空间
+
